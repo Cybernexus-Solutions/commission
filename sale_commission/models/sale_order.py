@@ -9,9 +9,6 @@ class SaleOrder(models.Model):
 
     def _auto_init(self):
         if not column_exists(self.env.cr, "sale_order", "commission_total"):
-            # In case of a big database with a lot of products, the RAM gets exhausted
-            # To prevent a process from being killed We create the column 'minimum_uom_qty' manually
-            # Then we do the computation in a query by setting the value to 1.0
             create_column(self.env.cr, "sale_order", "commission_total", "numeric")
             self.env.cr.execute(
                 """
@@ -63,6 +60,11 @@ class SaleOrderLine(models.Model):
     ]
     _name = "sale.order.line"
 
+    def _auto_init(self):
+        if not column_exists(self.env.cr, "sale_order_line", "commission_free"):
+            create_column(self.env.cr, "sale_order_line", "commission_free", "boolean")
+        return super()._auto_init()
+
     agent_ids = fields.One2many(comodel_name="sale.order.line.agent")
 
     @api.depends("order_id.partner_id")
@@ -87,6 +89,11 @@ class SaleOrderLineAgent(models.Model):
     _inherit = "commission.line.mixin"
     _name = "sale.order.line.agent"
     _description = "Agent detail of commission line in order lines"
+
+    def _auto_init(self):
+        if not column_exists(self.env.cr, "sale_order_line_agent", "amount"):
+            create_column(self.env.cr, "sale_order_line_agent", "amount", "numeric")
+        return super()._auto_init() 
 
     object_id = fields.Many2one(comodel_name="sale.order.line")
 

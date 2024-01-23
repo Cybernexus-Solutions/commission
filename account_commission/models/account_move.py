@@ -13,15 +13,7 @@ class AccountMove(models.Model):
 
     def _auto_init(self):
         if not column_exists(self.env.cr, "account_move", "commission_total"):
-            # In case of a big database with a lot of products, the RAM gets exhausted
-            # To prevent a process from being killed We create the column 'minimum_uom_qty' manually
-            # Then we do the computation in a query by setting the value to 1.0
             create_column(self.env.cr, "account_move", "commission_total", "numeric")
-            self.env.cr.execute(
-                """
-                UPDATE account_move SET commission_total = 0.00
-                """
-            )
         return super()._auto_init()
 
     commission_total = fields.Float(
@@ -143,6 +135,11 @@ class AccountMoveLine(models.Model):
     ]
     _name = "account.move.line"
 
+    def _auto_init(self):
+        if not column_exists(self.env.cr, "account_move_line", "commission_free"):
+            create_column(self.env.cr, "account_move_line", "commission_free", "boolean")
+        return super()._auto_init()
+
     agent_ids = fields.One2many(comodel_name="account.invoice.line.agent")
     any_settled = fields.Boolean(compute="_compute_any_settled")
 
@@ -186,6 +183,11 @@ class AccountInvoiceLineAgent(models.Model):
     _inherit = "commission.line.mixin"
     _name = "account.invoice.line.agent"
     _description = "Agent detail of commission line in invoice lines"
+
+    def _auto_init(self):
+        if not column_exists(self.env.cr, "account_invoice_line_agent", "amount"):
+            create_column(self.env.cr, "account_invoice_line_agent", "amount", "numeric")
+        return super()._auto_init()    
 
     object_id = fields.Many2one(comodel_name="account.move.line")
     invoice_id = fields.Many2one(
