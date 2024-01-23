@@ -2,10 +2,23 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
-
+from odoo.tools.sql import column_exists, create_column
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
+
+    def _auto_init(self):
+        if not column_exists(self.env.cr, "sale_order", "commission_total"):
+            # In case of a big database with a lot of products, the RAM gets exhausted
+            # To prevent a process from being killed We create the column 'minimum_uom_qty' manually
+            # Then we do the computation in a query by setting the value to 1.0
+            create_column(self.env.cr, "sale_order", "commission_total", "numeric")
+            self.env.cr.execute(
+                """
+                UPDATE sale_order SET commission_total = 0.00
+                """
+            )
+        return super()._auto_init()
 
     @api.depends("order_line.agent_ids.amount")
     def _compute_commission_total(self):
