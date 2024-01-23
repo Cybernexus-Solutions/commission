@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
-from odoo.tools.sql import column_exists, create_column
+from odoo.tools.sql import column_exists, create_column, table_exists
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -91,7 +91,7 @@ class SaleOrderLineAgent(models.Model):
     _description = "Agent detail of commission line in order lines"
 
     def _auto_init(self):
-        if not column_exists(self.env.cr, "sale_order_line_agent", "amount"):
+        if table_exists(self.env.cr, "sale_order_line_agent") and not column_exists(self.env.cr, "sale_order_line_agent", "amount"):
             create_column(self.env.cr, "sale_order_line_agent", "amount", "numeric")
         return super()._auto_init() 
 

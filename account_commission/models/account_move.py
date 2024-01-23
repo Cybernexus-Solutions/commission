@@ -5,7 +5,7 @@
 from lxml import etree
 
 from odoo import _, api, exceptions, fields, models
-from odoo.tools.sql import column_exists, create_column
+from odoo.tools.sql import column_exists, create_column, table_exists
 
 
 class AccountMove(models.Model):
@@ -185,7 +185,7 @@ class AccountInvoiceLineAgent(models.Model):
     _description = "Agent detail of commission line in invoice lines"
 
     def _auto_init(self):
-        if not column_exists(self.env.cr, "account_invoice_line_agent", "amount"):
+        if table_exists(self.env.cr, "account_invoice_line_agent") and not column_exists(self.env.cr, "account_invoice_line_agent", "amount"):
             create_column(self.env.cr, "account_invoice_line_agent", "amount", "numeric")
         return super()._auto_init()    
 
