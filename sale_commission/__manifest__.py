@@ -17,6 +17,5 @@
         "security/ir.model.access.csv",
         "views/sale_order_view.xml",
     ],
-    'pre_init_hook': '_pre_init_sale_commission',
     "installable": True,
 }
