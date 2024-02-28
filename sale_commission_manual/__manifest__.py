@@ -1,7 +1,7 @@
 # Copyright 2024 Cybernexus Solutions
 {
     "name": "Sales commissions - Manually Set Commissions",
-    "version": "16.0.1.0.2",
+    "version": "16.0.1.0.3",
     "author": "Cybernexus Solutions, Odoo Community Association (OCA)",
     "category": "Sales Management",
     "license": "AGPL-3",
@@ -14,7 +14,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/sale_order_view.xml",
-        "wizards/sale_manually_set_commissions_wizard_view.xml",
+        "wizards/sale_manually_set_commissions_wizard.xml",
     ],
     "installable": True,
 }

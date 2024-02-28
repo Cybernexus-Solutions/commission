@@ -16,6 +16,9 @@
             <xpath expr="//button[@name='recompute_lines_agents']" position="attributes">
                 <attribute name="string" value="Reset Default Commissions" />
             </xpath>
+            <xpath expr="//button[@name='recompute_lines_agents']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
