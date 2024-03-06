@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models
 
-class SaleOrder(models.Model):
-    _inherit = "sale.order"
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
     def manually_set_commissions(self):
         agents = {}
@@ -19,7 +19,7 @@ class SaleOrder(models.Model):
             ).id,
             "type": "ir.actions.act_window",
             "context": {
-                "default_acount_move_id": self.id,
+                "default_account_move_id": self.id,
                 "default_partner_agent_ids": [(0,0, agents[key] ) for key in agents.keys()]
             },
             "target": "new",

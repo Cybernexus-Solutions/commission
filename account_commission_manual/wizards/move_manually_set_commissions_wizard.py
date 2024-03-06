@@ -15,7 +15,7 @@ class AccountMoveManuallySetCommissionsWizard(models.TransientModel):
         string='Agent Commissions')
    
     def action_save_commissions(self):
-        for sol in self.account_move_id.order_line.filtered(lambda x: not x.commission_free):
+        for sol in self.account_move_id.line_ids.filtered(lambda x: not x.commission_free):
             sol.agent_ids = False  # for resetting previous agents
             for pia in self.partner_agent_ids:
                 if pia.agent_id and pia.commission_id:
