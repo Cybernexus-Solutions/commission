@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="account_move_manual_commissions_wizard_view_form" model="ir.ui.view">
+        <field name="name">account.move.manual.commissions.wizard.view.form</field>
+        <field name="model">account.move.manual.commissions.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field
+                            name="account_move_id"
+                            string="Account Move"
+                            readonly="1"
+                        />
+                        <field name="partner_agent_ids" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="agent_id" />
+                                <field name="commission_id" />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="Apply"
+                        class="btn btn-primary"
+                        type="object"
+                        name="action_save_commissions"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Reset To Default Commissions"
+                        type="object"
+                        class="btn-secondary"
+                        name="action_reset_default_commissions"
+                        data-hotkey="y"
+                        confirm="Are you sure you want to reset commissions?"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="z"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
