@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_move_manual_commissions_wizard_user,account.move.manual.commissions.wizard.user,model_account_move_manual_commissions_wizard,base.group_user,1,0,0,0
+access_account_move_manual_commissions_wizard_invoicing,account.move.manual.commissions.wizard.invoicing,model_account_move_manual_commissions_wizard,account.group_account_invoice,1,1,1,1
+access_account_move_manual_commissions_wizard_agent,account.move.manual.commissions.wizard.agent.saleuser,model_account_move_manual_commissions_wizard_agent,account.group_account_invoice,1,1,1,1

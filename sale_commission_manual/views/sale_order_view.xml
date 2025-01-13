@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_manually_set_comission_form_inherit" model="ir.ui.view">
+        <field name="name">sale.manually.set.commission.order.inherit.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_commission.view_order_agent_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='recompute_lines_agents']" position="after">
+                <button
+                    name="manually_set_commissions"
+                    type="object"
+                    string="Manually Set Commissions"
+                    invisible="state not in ('draft', 'sent')"
+                />
+            </xpath>
+            <xpath
+                expr="//button[@name='recompute_lines_agents']"
+                position="attributes"
+            >
+                <attribute name="string" value="Reset Default Commissions" />
+            </xpath>
+            <xpath
+                expr="//button[@name='recompute_lines_agents']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
