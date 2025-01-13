@@ -50,7 +50,7 @@ class SaleOrderLine(models.Model):
     ]
     _name = "sale.order.line"
 
-    agent_ids = fields.One2many(comodel_name="sale.order.line.agent")
+    agent_ids = fields.One2many(comodel_name="sale.order.line.agent", copy=False)
 
     @api.depends("order_id.partner_id")
     def _compute_agent_ids(self):
