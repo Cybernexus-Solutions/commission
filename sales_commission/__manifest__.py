@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "depends": [
         "sale",
+        "commission",
         "account_commission",
     ],
     "website": "https://github.com/OCA/commission",

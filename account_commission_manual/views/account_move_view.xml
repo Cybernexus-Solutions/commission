@@ -19,7 +19,7 @@
                 expr="//button[@name='recompute_lines_agents']"
                 position="attributes"
             >
-                <attribute name="string" value="Reset Default Commissions" />
+                <attribute name="string">Reset Default Commissions"</attribute>
             </xpath>
             <xpath
                 expr="//button[@name='recompute_lines_agents']"

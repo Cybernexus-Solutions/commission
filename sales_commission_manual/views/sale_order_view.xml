@@ -3,7 +3,7 @@
     <record id="view_order_manually_set_comission_form_inherit" model="ir.ui.view">
         <field name="name">sale.manually.set.commission.order.inherit.form</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale_commission.view_order_agent_form_inherit" />
+        <field name="inherit_id" ref="sales_commission.view_order_agent_form_inherit" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='recompute_lines_agents']" position="after">
                 <button
@@ -17,7 +17,7 @@
                 expr="//button[@name='recompute_lines_agents']"
                 position="attributes"
             >
-                <attribute name="string" value="Reset Default Commissions" />
+                <attribute name="string">Reset Default Commissions</attribute>
             </xpath>
             <xpath
                 expr="//button[@name='recompute_lines_agents']"
