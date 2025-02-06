@@ -8,7 +8,7 @@
     "category": "Sales",
     "website": "https://github.com/OCA/commission",
     "license": "AGPL-3",
-    "depends": ["sales_commission"],
+    "depends": ["sale_commission_oca"],
     "data": ["views/res_partner_views.xml"],
     "installable": True,
 }

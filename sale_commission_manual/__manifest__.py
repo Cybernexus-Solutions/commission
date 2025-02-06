@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     "depends": [
         "sale",
-        "sales_commission",
+        "sale_commission_oca",
     ],
     "website": "https://github.com/OCA/commission",
     "maintainers": ["cybernexus"],
