@@ -51,7 +51,7 @@
     </record>
     <!-- This view is needed for proper visualization of the popup / embedded one2many -->
     <record model="ir.ui.view" id="view_sale_order_line_tree">
-        <field name="name">sale.order.line.agent.list</field>
+        <field name="name">sale.order.line.agent.tree</field>
         <field name="model">sale.order.line.agent</field>
         <field name="arch" type="xml">
             <list editable="bottom">
