@@ -6,4 +6,4 @@ corresponding invoice lines.
 Creating settlements directly from the sales order lines is outside the
 scope of this module.
 
-This module depends on the account_commission module.
+This module depends on the account_commission_oca module.

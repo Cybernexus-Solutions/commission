@@ -5,7 +5,7 @@
             name="name"
         >account.invoice.form.agent.manually.set.commission.order</field>
         <field name="model">account.move</field>
-        <field name="inherit_id" ref="account_commission.view_move_form" />
+        <field name="inherit_id" ref="account_commission_oca.view_move_form" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='recompute_lines_agents']" position="after">
                 <button
