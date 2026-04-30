@@ -97,7 +97,7 @@ class CommissionMakeSettle(models.TransientModel):
             "settlement_id": settlement.id,
         }
 
-    def _get_agent_lines(self, date_to_agent):
+    def _get_agent_lines(self, agent, date_to_agent):
         """Need to be extended according to settlement_type."""
         raise NotImplementedError()
 

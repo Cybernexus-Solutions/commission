@@ -80,10 +80,10 @@ class CommissionSettlement(models.Model):
     def action_cancel(self):
         self.write({"state": "cancel"})
 
-    def _message_auto_subscribe_followers(self, updated_values, subtype_ids):
-        res = super()._message_auto_subscribe_followers(updated_values, subtype_ids)
+    def _message_auto_subscribe_followers(self, updated_values, default_subtype_ids):
+        res = super()._message_auto_subscribe_followers(updated_values, default_subtype_ids)
         if updated_values.get("agent_id"):
-            res.append((updated_values["agent_id"], subtype_ids, False))
+            res.append((updated_values["agent_id"], default_subtype_ids, False))
         return res
 
 
